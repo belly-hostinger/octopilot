@@ -1,37 +1,34 @@
 app:
   version: '3.0'
-
 config:
   ingress:
-## start ingress affiliate
-  - name: affiliate
-    annotations:
-      nginx.ingress.kubernetes.io/use-regex: true
-      nginx.ingress.kubernetes.io/configuration-snippet: |
-        more_clear_headers set-cookie;
-    hosts:
-    - name: au.domain.com
-      paths:
-      - path: /*
-    - name: br.domain.com
-      paths:
-      - path: /*
-    - name: ca.domain.com
-      paths:
-      - path: /*
-    - name: es.domain.com
-      paths:
-      - path: /*
-    - name: hi.domain.in
-
-## start ingress main
-  - name: main.domain.co.id
-    hosts:
-    - name: main.domain.co.id
-      paths:
-      - path: /
-    tls:
-    - name: domain.co.id
+    ## start ingress affiliate
+    - name: affiliate
+      annotations:
+        nginx.ingress.kubernetes.io/use-regex: true
+        nginx.ingress.kubernetes.io/configuration-snippet: |
+          more_clear_headers set-cookie;
       hosts:
-      - main.domain.co.id
-
+        - name: www.mydomain.au,indent=0
+          paths:
+            - path: /*
+        - name: br.domain.com
+          paths:
+            - path: /*
+        - name: ca.domain.com
+          paths:
+            - path: /*
+        - name: es.domain.com
+          paths:
+            - path: /*
+        - name: hi.domain.in
+          ## start ingress main
+    - name: main.domain.co.id
+      hosts:
+        - name: main.domain.co.id
+          paths:
+            - path: /
+      tls:
+        - name: domain.co.id
+          hosts:
+            - main.domain.co.id
