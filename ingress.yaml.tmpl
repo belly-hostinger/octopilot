@@ -1,0 +1,10 @@
+---
+apache:
+  ingress:
+  - name: customer-ingress
+    annotations:
+      nginx.ingress.kubernetes.io/configuration-snippet: |
+        more_clear_headers set-cookie;
+    hosts:
+    - name: domain1.com
+...
